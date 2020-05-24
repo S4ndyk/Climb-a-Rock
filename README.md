@@ -7,4 +7,4 @@ Climb a Rock on tietokanta ulkokiipeilyreiteille. Käyttäjä voi selata ja lis�
 
 ### Alustava tietokantakaavio
 
-![tietokantakaavio](img/kaavio.png)
+![tietokantakaavio](doc/img/kaavio.png)
