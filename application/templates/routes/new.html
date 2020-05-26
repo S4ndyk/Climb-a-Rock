@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form method="POST" action="{{ url_for('routes_create') }}">
+  <input type="text" name="name" />
+  <select  name="routetype">
+    <option value="boulder">Boulder</option>
+    <option value="sport">Sport route</option>
+    <option value="traditional">Traditional route</option>
+  </select>
+  <input type="submit" value="Create new route" />
+</form>
+{% endblock %}
