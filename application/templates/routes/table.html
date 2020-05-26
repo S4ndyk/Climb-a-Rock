@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>Route</th>
+      <th>Type</th>
+    </tr>
+    {% for route in routes %}
+    <tr>
+      <td>{{ route.name }}</td>
+      <td>{{ route.route_type }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
