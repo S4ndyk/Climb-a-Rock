@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Climb a rock</title>
-  </head>
 
-  <body>
-    {% block body %}
-      <p>
-        Content.
-      </p>
-    {% endblock %}
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>Climb a rock</title>
+</head>
+
+<body>
+  <ul>
+    <li>
+      <a href="{{ url_for('routes_index')}}">List routes</a>
+    </li>
+    <li>
+      <a href="{{ url_for('routes_create')}}">Add new route</a>
+    </li>
+  </ul>
+  {% block body %}
+  <p>
+    Content.
+  </p>
+  {% endblock %}
+</body>
+
 </html>
