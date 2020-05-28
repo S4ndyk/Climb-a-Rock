@@ -2,12 +2,27 @@
 
 {% block body %}
 <form method="POST" action="{{ url_for('routes_create') }}">
-  <input type="text" name="name" />
-  <select  name="routetype">
-    <option value="boulder">Boulder</option>
-    <option value="sport">Sport route</option>
-    <option value="traditional">Traditional route</option>
-  </select>
-  <input type="submit" value="Create new route" />
+  <table>
+    <tr>
+      <td>
+        {{ form.name.label }}
+      </td>
+      <td>
+        {{ form.name }}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{ form.route_type.label }}
+      </td>
+      <td>
+        {{ form.route_type }}
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <input type="submit" value="Add a new route" />
+      </td>
+    </tr>
 </form>
 {% endblock %}

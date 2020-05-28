@@ -1,6 +1,7 @@
 from flask import render_template, request, redirect, url_for
 from application import app, db
 from application.routes.models import Route
+from application.routes.forms import RouteForm, UpdateRouteForm
 
 
 @app.route("/")
@@ -13,25 +14,26 @@ def routes_index():
 
 @app.route("/routes/new")
 def routes_form():
-  return render_template("routes/new.html")
+  return render_template("routes/new.html", form = RouteForm())
 
 
 @app.route("/routes", methods=["POST"])
 def routes_create():
-  route_name = request.form.get("name")
-  route_type = request.form.get("routetype")
-  new_route = Route(route_name, route_type)
+  form = RouteForm(request.form)
+  new_route = Route(form.name.data, form.route_type.data)
   db.session().add(new_route)
   db.session().commit()
   return redirect(url_for("routes_index"))
 
 @app.route("/routes/<route_id>", methods=["GET"])
 def routes_update(route_id):
-  return render_template("routes/update.html", id = route_id)
+  return render_template("routes/update.html", form = UpdateRouteForm(), id = route_id)
 
 @app.route("/routes/<route_id>", methods=["POST"])
 def routes_commit(route_id):
-  r = Route.query.get(route_id)
-  r.name = request.form.get("new_name")
+  form = UpdateRouteForm(request.form)
+  route_to_update = Route.query.get(route_id)
+  route_to_update.name = form.new_name.data
+  print(route_to_update)
   db.session().commit()
   return redirect(url_for("routes_index"))
