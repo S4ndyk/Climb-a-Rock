@@ -1,19 +1,27 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <table>
-    <tr>
-      <th>Route</th>
-      <th>Type</th>
-    </tr>
-    {% for route in routes %}
-    <tr>
-      <td>
-        {{ route.name }}
-        <a href="{{ url_for('routes_update', route_id=route.id) }}">edit</a>
-      </td>
-      <td>{{ route.route_type }}</td>
-    </tr>
-    {% endfor %}
-  </table>
+<ul>
+  <li>
+    <a href="{{ url_for('routes_index')}}">List routes</a>
+  </li>
+  <li>
+    <a href="{{ url_for('routes_form')}}">Add new route</a>
+  </li>
+</ul>
+<table>
+  <tr>
+    <th>Route</th>
+    <th>Type</th>
+  </tr>
+  {% for route in routes %}
+  <tr>
+    <td>
+      {{ route.name }}
+      <a href="{{ url_for('routes_update', route_id=route.id) }}">edit</a>
+    </td>
+    <td>{{ route.route_type }}</td>
+  </tr>
+  {% endfor %}
+</table>
 {% endblock %}
