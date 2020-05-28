@@ -24,3 +24,14 @@ def routes_create():
   db.session().add(new_route)
   db.session().commit()
   return redirect(url_for("routes_index"))
+
+@app.route("/routes/<route_id>", methods=["GET"])
+def routes_update(route_id):
+  return render_template("routes/update.html", id = route_id)
+
+@app.route("/routes/<route_id>", methods=["POST"])
+def routes_commit(route_id):
+  r = Route.query.get(route_id)
+  r.name = request.form.get("new_name")
+  db.session().commit()
+  return redirect(url_for("routes_index"))

@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form method="POST" action="{{ url_for('routes_update', route_id=id) }}">
+  <input type="text" name="new_name" />
+  <input type="submit" value="Update route" />
+</form>
+{% endblock %}
