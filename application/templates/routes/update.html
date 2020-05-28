@@ -2,7 +2,7 @@
 
 {% block body %}
 <a href="{{ url_for('routes_index')}}">Cancel</a>
-<form method="POST" action="{{ url_for('routes_update', route_id=id) }}">
+<form method="POST" action="{{ url_for('routes_commit', route_id=id) }}">
   <input type="text" name="new_name" />
   <input type="submit" value="Update route" />
 </form>
