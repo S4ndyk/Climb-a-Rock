@@ -8,7 +8,10 @@
     </tr>
     {% for route in routes %}
     <tr>
-      <td>{{ route.name }}</td>
+      <td>
+        {{ route.name }}
+        <a href="{{ url_for('routes_update', route_id=route.id) }}">edit</a>
+      </td>
       <td>{{ route.route_type }}</td>
     </tr>
     {% endfor %}
