@@ -7,14 +7,20 @@
 </head>
 
 <body>
+  {% if current_user.is_authenticated %}
+  <p>
+    Kirjautunut nimellä {{ current_user.name }}
+    <a href="{{ url_for('auth_logout')}}">Logout</a>
+  </p>
+  {% else %}
+  <a href="{{ url_for('auth_login') }}">Login</a>
+  {% endif %}
+
   <ul>
-    <li>
-      <a href="{{ url_for('routes_index')}}">List routes</a>
-    </li>
-    <li>
-      <a href="{{ url_for('routes_form')}}">Add new route</a>
-    </li>
+    <li><a href="{{ url_for('routes_index') }}">List routes</a></li>
+    <li><a href="{{ url_for('routes_form') }}">Add a route</a></li>
   </ul>
+
   {% block body %}
   <p>
     Content.
