@@ -2,7 +2,8 @@ from flask import render_template, request, redirect, url_for
 from application import app, db
 from application.routes.models import Route
 from application.routes.forms import RouteForm, UpdateRouteForm
-from flask_login import login_required
+from application.ascents.forms import AscentForm
+from flask_login import login_required, current_user
 
 
 @app.route("/")
@@ -30,8 +31,15 @@ def routes_create():
 
 @app.route("/routes/<route_id>", methods=["GET"])
 @login_required
+def routes_view(route_id):
+  route = Route.query.get(route_id)
+  return render_template("routes/route.html", route = route, form = AscentForm(route_id = route_id, user_id = current_user.id))
+
+@app.route("/routes/edit/<route_id>", methods=["GET"])
+@login_required
 def routes_update(route_id):
-  return render_template("routes/update.html", form = UpdateRouteForm(), id = route_id)
+  route = Route.query.get(route_id)
+  return render_template("routes/update.html", route = route, form = UpdateRouteForm())
 
 @app.route("/routes/<route_id>", methods=["POST"])
 @login_required

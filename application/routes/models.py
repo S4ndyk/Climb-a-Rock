@@ -4,7 +4,7 @@ class Route(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String(100), nullable=False)
   route_type = db.Column(db.String(100), nullable=False)
-  ascents = db.relationship("Ascent", backref='ascent', lazy=True)
+  ascents = db.relationship("Ascent", backref='route', lazy=True)
 
   def __init__(self, name, route_type):
     self.name = name

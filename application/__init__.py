@@ -9,6 +9,7 @@ db = SQLAlchemy(app)
 
 from application.routes import views
 from application.auth import views
+from application.ascents import views
 
 from application.routes import models
 from application.auth import models

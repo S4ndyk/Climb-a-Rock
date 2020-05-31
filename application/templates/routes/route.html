@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h2>{{route.name}} - {{route.route_type}}</h2>
+<form method="POST" action="{{ url_for('ascent_create') }}">
+  <table>
+    <tr>
+      <td>
+        {{ form.grade.label }}
+      </td>
+      <td>
+        {{ form.grade }}
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <input type="submit" value="Tick ascent" />
+      </td>
+    </tr>
+    {{form.user_id}}
+    {{form.route_id}}
+</form>
+{% endblock %}

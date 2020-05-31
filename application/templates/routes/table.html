@@ -5,14 +5,15 @@
   <tr>
     <th>Route</th>
     <th>Type</th>
+    <th></th>
   </tr>
   {% for route in routes %}
   <tr>
     <td>
-      {{ route.name }}
-      <a href="{{ url_for('routes_update', route_id=route.id) }}">edit</a>
+      <a href="{{ url_for('routes_view', route_id=route.id) }}">{{ route.name }}</a>
     </td>
     <td>{{ route.route_type }}</td>
+    <td><a href="{{ url_for('routes_update', route_id=route.id)}}">edit</a></td>
   </tr>
   {% endfor %}
 </table>
