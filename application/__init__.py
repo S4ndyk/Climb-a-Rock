@@ -12,6 +12,7 @@ from application.auth import views
 
 from application.routes import models
 from application.auth import models
+from application.ascents import models
 
 # Kirjautuminen
 from application.auth.models import User
