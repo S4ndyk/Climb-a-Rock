@@ -5,20 +5,18 @@ from application.routes.forms import RouteForm, UpdateRouteForm
 from application.ascents.forms import AscentForm
 from flask_login import login_required, current_user
 
-
 @app.route("/")
 def index():
     return render_template("index.html")
 
 @app.route("/routes", methods=["GET"])
 def routes_index():
-    return render_template("routes/table.html", routes = Route.query.all())
+    return render_template("routes/list.html", routes = Route.query.all())
 
 @app.route("/routes/new")
 @login_required
 def routes_form():
   return render_template("routes/new.html", form = RouteForm())
-
 
 @app.route("/routes", methods=["POST"])
 @login_required
