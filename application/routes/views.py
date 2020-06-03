@@ -9,16 +9,16 @@ from flask_login import login_required, current_user
 def index():
     return render_template("index.html")
 
-@app.route("/routes", methods=["GET"])
+@app.route("/routes/all/", methods=["GET"])
 def routes_index():
     return render_template("routes/list.html", routes = Route.query.all())
 
-@app.route("/routes/new")
+@app.route("/routes/new/")
 @login_required
 def routes_form():
   return render_template("routes/new.html", form = RouteForm())
 
-@app.route("/routes", methods=["POST"])
+@app.route("/routes/", methods=["POST"])
 @login_required
 def routes_create():
   form = RouteForm(request.form)
@@ -45,6 +45,5 @@ def routes_commit(route_id):
   form = UpdateRouteForm(request.form)
   route_to_update = Route.query.get(route_id)
   route_to_update.name = form.new_name.data
-  print(route_to_update)
   db.session().commit()
   return redirect(url_for("routes_index"))

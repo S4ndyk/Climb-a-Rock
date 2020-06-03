@@ -10,6 +10,7 @@
   {% for route in routes %}
   <tr>
     <td>
+      <p>{{ url_for('routes_update', route_id=route.id)}}</p>
       <a href="{{ url_for('routes_view', route_id=route.id) }}">{{ route.name }}</a>
     </td>
     <td>{{ route.route_type }}</td>
